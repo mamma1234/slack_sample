@@ -1,7 +1,7 @@
 from slack_sdk import WebhookClient
 from slack_sdk.errors import SlackApiError
 
-webhook_url = 'https://hooks.slack.com/services/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'
+webhook_url = 'https://hooks.slack.com/services/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'
 
 slack_webhook = WebhookClient(url=webhook_url)
 
