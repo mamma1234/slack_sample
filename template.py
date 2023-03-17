@@ -1,9 +1,10 @@
 import slack_api
 
-token = "xoxb-744485817254-4961788514196-6PIRV4HMx8FsYqPG0z7E4r1o"
+# token = "xoxb-744485817254-4961788514196-6PIRV4HMx8FsYqPG0z7E4r1o"
+token = "xoxb-744485817254-4961788514196-pwTgLJg4bwl2P1gBgTt79vVD"
 slack = slack_api.SlackAPI(token)
 
-channel_name = "mamma" #webhook
+channel_name = "bot" #webhook
 query = "슬랙 봇 테스트"
 text = "자동 생성 문구 테스트"
 
@@ -13,3 +14,6 @@ channel_id = slack.get_channel_id(channel_name)
 message_ts = slack.get_message_ts(channel_id, query)
 # 댓글 달기
 slack.post_thread_message(channel_id, message_ts, text)
+
+text1 = "메세지 전송"
+slack.post_message(channel_id, text1)

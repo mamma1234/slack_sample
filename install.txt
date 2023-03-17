@@ -1,2 +1,6 @@
 pip install requests
 pip install slack_sdk
+pip install asyncio
+pip install slackclient
+pip install aiohttp
+pip install slack_bolt

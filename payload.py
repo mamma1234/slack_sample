@@ -1,15 +1,15 @@
 import requests
 import json
 
-url = "https://hooks.slack.com/services/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"
+url = "https://hooks.slack.com/services/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"
 headers = {"Content-type": "application/json"}
 
 payload = {
 	"blocks": [
 		{
-			# "type": "section",
+			"type": "section",
 			"text": {
-				# "type": "plain_text1111",
+				"type": "plain_text1111",
 				"text": "This is a plain text section block.",
 				"emoji": "true"
 			}
