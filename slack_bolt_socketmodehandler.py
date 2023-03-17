@@ -4,10 +4,13 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack import WebClient
 from slack_bolt import App
 import re
+from dotenv import load_dotenv
 
-SLACK_BOT_TOKEN = "xoxb-744485817254-4961788514196-pwTgLJg4bwl2P1gBgTt79vVD"
-SLACK_APP_TOKEN = "xapp-1-A04U9NWNQF6-4960366029779-b570d5c2f8099a2a347ddea4d3cc75ca68e60b3deae24ab05ce215730cebb08e"
-SLACK_CHANNEL_ID = "C04U7E4JRV0"
+load_dotenv()
+
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
+SLACK_CHANNEL_ID = os.getenv("SLACK_CHANNEL_ID")
 
 # Event API & Web API
 app = App(token=SLACK_BOT_TOKEN)
@@ -37,7 +40,6 @@ def handle_message_events(event, message, say):
 
     if "12345" in message['text']:
         say("코드입력")
-        
 
 if __name__ == '__main__':
     SocketModeHandler(app, SLACK_APP_TOKEN).start()

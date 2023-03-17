@@ -1,5 +1,10 @@
 from slack_sdk import WebClient
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 class SlackAPI:
     """
     슬랙 API 핸들러
@@ -7,7 +12,7 @@ class SlackAPI:
     def __init__(self, token):
         # 슬랙 클라이언트 인스턴스 생성
         self.client = WebClient(token)
-        print(self.client)
+        # print(self.client)
         
     def get_channel_id(self, channel_name):
         """
@@ -23,6 +28,7 @@ class SlackAPI:
         channel = list(filter(lambda c: c["name"] == channel_name, channels))[0]
         # 채널ID 파싱
         channel_id = channel["id"]
+        print(channel_id)
         return channel_id
 
     def get_message_ts(self, channel_id, query):
@@ -82,3 +88,18 @@ class SlackAPI:
 # message_ts = slack.get_message_ts(channel_id, query)
 # # # 댓글 달기
 # slack.post_thread_message(channel_id, message_ts, text)
+slack = SlackAPI(SLACK_BOT_TOKEN)
+
+channel_name = "bot" #webhook
+query = "슬랙 봇 테스트"
+text = "자동 생성 문구 테스트"
+
+# 채널ID 파싱
+channel_id = slack.get_channel_id(channel_name)
+# query(슬랙 봇 테스트) 메세지ts 파싱
+message_ts = slack.get_message_ts(channel_id, query)
+# 댓글 달기
+slack.post_thread_message(channel_id, message_ts, text)
+
+text1 = "메세지 전송"
+slack.post_message(channel_id, text1)

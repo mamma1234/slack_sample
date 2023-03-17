@@ -4,3 +4,5 @@ pip install asyncio
 pip install slackclient
 pip install aiohttp
 pip install slack_bolt
+pip install regex
+pip install python-dotenv

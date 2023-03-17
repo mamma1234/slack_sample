@@ -3,8 +3,12 @@ import os
 # requires: pip install aiohttp
 from slack_sdk.web.async_client import AsyncWebClient
 from slack_sdk.errors import SlackApiError
+from dotenv import load_dotenv
 
-client = AsyncWebClient("xoxb-744485817254-4961788514196-pwTgLJg4bwl2P1gBgTt79vVD")
+load_dotenv()
+
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+client = AsyncWebClient(SLACK_BOT_TOKEN)
 
 # This must be an async method
 async def main() -> None:

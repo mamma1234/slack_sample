@@ -1,16 +1,20 @@
 
-# xoxb-744485817254-4961788514196-6PIRV4HMx8FsYqPG0z7E4r1o
+import os
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
- 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+SLACK_CHANNEL_ID = os.getenv("SLACK_CHANNEL_ID")
 # ID of the channel you want to send the message to
-channel_id = "C04U0LZ9HUN" #C04U7E4JRV0
-slack_token = "xoxb-744485817254-4961788514196-6PIRV4HMx8FsYqPG0z7E4r1o"
-client = WebClient(token=slack_token)
+
+client = WebClient(token=SLACK_BOT_TOKEN)
 try:
     # Call the chat.postMessage method using the WebClient
     result = client.chat_postMessage(
-        channel=channel_id,
+        channel=SLACK_CHANNEL_ID,
         text="Hello world"
     )
  

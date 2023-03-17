@@ -1,10 +1,19 @@
 from slack_sdk import WebhookClient
 from slack_sdk.errors import SlackApiError
+import os
+from dotenv import load_dotenv
 
-webhook_url = 'https://hooks.slack.com/services/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'
+load_dotenv()
 
-slack_webhook = WebhookClient(url=webhook_url)
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
+slack_webhook = WebhookClient(url=WEBHOOK_URL)
+
+msg = '''
+This is test message using slack webhook
+line 1
+line 2
+'''
 
 mrkdwn_text = '''
 This is test message.
@@ -28,6 +37,10 @@ _italicize_
 
 
 try:
+    response = slack_webhook.send(text=msg)
+    print(response.status_code)
+    print(response.body)
+    
     response = slack_webhook.send(
         blocks=[
             {
